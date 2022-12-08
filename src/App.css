@@ -1,0 +1,30 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.gap-10 {
+  gap: 10px;
+}
+.gap-20 {
+  gap: 20px;
+}
+
+.jc {
+  justify-content: center;
+}
+
+.js {
+  justify-content: space-between;
+}
+
+.center {
+  align-content: center;
+  align-items: center;
+}
