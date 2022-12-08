@@ -51,12 +51,12 @@ class Login extends React.Component {
           {({ isLoggedIn, user, setUser, toggleLogin }) => (
             <>
             {isLoggedIn && <Navigate to="/"/>}
-          <form onSubmit={(e) => this.handleSubmit(e, setUser, toggleLogin)}>
-          <label>
+          <form className="flex col center gap-10" onSubmit={(e) => this.handleSubmit(e, setUser, toggleLogin)}>
+          <label className="flex gap-20">
             Username
             <input type="text" name="username" value={this.state.username} onChange={(e) => this.handleChange(e)} />
           </label>
-          <label>
+          <label className="flex gap-20">
             Password
             <input type="text" name="password" value={this.state.password} onChange={(e) => this.handleChange(e)} />
 
