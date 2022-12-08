@@ -1,5 +1,8 @@
 Please find the requirement for the react machine test.
 
+TODO: 
+[ ] UserContext
+[ ] 
  
 
 Create a react app with following features. As you don't need to create any backend you can use this fake JSON api for
