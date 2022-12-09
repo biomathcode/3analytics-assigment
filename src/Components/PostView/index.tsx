@@ -43,10 +43,10 @@ class PostView extends React.Component<PostProps, PostState> {
             return <LoadingIndicator/>
         }
         return ( data &&
-            <div>
+            <div className='postview'>
                 <h1>{data.title}</h1>
                 
-                <div>{data.body}</div>
+                <p>{data.body}</p>
 
             </div>
          );

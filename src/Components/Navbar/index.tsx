@@ -15,15 +15,28 @@ function Navbar() {
 
             {({ isLoggedIn, user, setUser, toggleLogin }) => (
                   
-                    <nav>
-                        <Link to="/">home</Link>
+                    <nav className="flex center jc">
+                        <div className="flex js center gap-20 "
+                        style={{
+                            backgroundColor: 'var(--black4)', 
+                            opacity: '0.9',
+                            width: '80%', 
+                            padding: '10px 40px', 
+                            borderRadius: '5px', 
+                            boxShadow: '0px 2px 1px var(--black2)'
+                        }}
+                        >
+                        <Link to="/">Home</Link>
                         {isLoggedIn ? 
                         <button onClick={() =>logOut(setUser, toggleLogin)} >
-                        logOut
+                        log out
                     </button>  :
                         <Link to="/login">login</Link> 
                       
                     }
+
+                        </div>
+                       
                         
                         <Outlet />
                     </nav>

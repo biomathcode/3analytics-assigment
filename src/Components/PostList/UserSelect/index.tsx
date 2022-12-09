@@ -36,11 +36,11 @@ class UserSelect extends React.Component {
     render() { 
         const {data} = this.state;
         return (
-        <>
-        <label className="flex gap-10">
+        <div className="flex " style={{width: '80%'}}>
+        <label className="flex gap-10 center">
         Get Post By User
         <select defaultValue="None">
-            <option disabled>None</option>
+            <option >None</option>
             {
                 data.map((el) => {
                     return <option key={el.id}>{el.username}</option>
@@ -48,7 +48,7 @@ class UserSelect extends React.Component {
             }
 </select>
 </label>
-        </>
+        </div>
             
 
           );

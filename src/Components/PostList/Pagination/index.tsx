@@ -1,9 +1,25 @@
-function Pagination() {
+type PageType = {
+    page: number, 
+    change: (e:number) => void;
+}
+
+function Pagination({page,change}:PageType) {
+    const color =(el:number) =>  page === el ? 'var(--primary)': 'var(--black3)'
     return ( 
-        <div className="flex w-100 center gap-10">
+        <div className="flex p-20 jc center gap-10">
             {
-                [1,2,3,4,5,6,7,8,9,10].map((el) =>  (
-                        <div style={{width: '40px', height: '40px', background: '#555'}} key={el}>{el}</div>
+                [0,1,2,3,4,5,6,7,8,9].map((el) =>  (
+                        <div className={"center flex jc"    }  
+                        onClick={() => change(el)}
+                        style={{
+                            cursor: 'pointer',
+                            width: '20px',
+                            height: '20px', 
+                            fontSize: '12px', 
+                            padding: '2px', 
+                            borderRadius: '3px', 
+                            background: color(el )
+                        }} key={el}>{el + 1}</div>
                     )
                 )
             }

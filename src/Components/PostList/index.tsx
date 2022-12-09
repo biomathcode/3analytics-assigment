@@ -9,25 +9,39 @@ import UserSelect from './UserSelect';
 // TODO: Add Pagination 
 // TODO: add Styles
 
+interface PropType {
+    
+}
 
  
 interface PostState {
     isFetching: boolean,
     data: PostType[] | [];
+    page: number,
 }
  
-class PostList extends React.Component{
-    state:PostState = { 
-        isFetching: true, 
-    data: [] 
+class PostList extends React.Component<PropType,PostState>{
+    constructor(props:any) {
+        super(props);
+        this.state = { 
+            isFetching: true, 
+        data: [], 
+        page: 0, 
+        }
     }
 
     async fetchFunction() {
         const data =  await getPosts();
         this.setState({
             isFetching: false, 
-            data: data
+            data: data, 
+            page: 0,
         })
+    }
+
+    changePagination = (e:number) =>{
+        console.log('this is not working', e)
+        this.setState((prev) => ({...prev, page: e}))
     }
 
     componentDidMount(): void {
@@ -35,14 +49,20 @@ class PostList extends React.Component{
        console.log('this is to time render')
     }
     render() { 
-        const {data, isFetching} = this.state;
+        const {data, isFetching,page} = this.state;
+
+        const offset = page * 10;
+        const perpage = 10;
+
+        const newdata = data.slice(offset, offset + perpage)
+        console.log('tjisis page', page);
         return ( 
-            <div className="  jc flex col center  mt-40">
+            <div className=" container  jc flex col center  mt-40">
                 <UserSelect/>
                 {isFetching && <LoadingIndicator/>}
                 <div className="flex col jc center">
                 {
-                    data.map((post) => {
+                    newdata.map((post) => {
                         return(
                             <PostCard key={post.id} id={post.id} title={post.title} body={post.body}/>
                         )
@@ -51,7 +71,7 @@ class PostList extends React.Component{
 
                 </div>
                 
-                <Pagination/>
+                <Pagination page={page} change={this.changePagination}/>
 
 
             </div>

@@ -2,7 +2,6 @@ import React, { ChangeEvent, FormEvent, ReactPropTypes} from "react";
 import { Navigate } from "react-router-dom";
 import UserContext, { UserConsumer } from "../context/UserContext";
 
-//https://www.taniarascia.com/using-context-api-in-react/
 
 type stateType = {
     username: string;

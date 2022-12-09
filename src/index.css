@@ -12,16 +12,19 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --black1: #40444b;
-  --black2: #2f3136;
-  --black3: #292b2f;
-  --black4: #202225;
+  --black1: #434444;
+  --black2: #2f2f2f;
+  --black3: #272727;
+  --black4: #1b1c1d;
+
   --primary: #404eed;
+  --nav-bar: #161616;
+
   --secondary: #5865f2;
   --text1: #ffffff;
   --text2: #eee;
 
-  --nav-height: 40px;
+  --nav-height: 60px;
 }
 
 body {
@@ -35,6 +38,7 @@ body {
 a {
   text-decoration: none;
   color: var(--text1);
+  transition: all ease-in 300ms;
 }
 
 nav a {
@@ -70,12 +74,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--black2);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--primary);
 }
 button:focus,
 button:focus-visible {
@@ -83,7 +87,7 @@ button:focus-visible {
 }
 
 nav {
-  position: absolute;
+  position: sticky;
   top: 10px;
   height: 40px;
   width: 100vw;
@@ -94,10 +98,8 @@ nav {
 
 .container {
   width: 100vw;
-  height: calc(100vh - var(--nav-height));
-  padding: 100px;
+  /* height: calc(100vh - var(--nav-height)); */
   margin-top: var(--nav-height);
-  border: 1px solid #3e3e3e;
 }
 
 .mt-10 {
@@ -110,7 +112,7 @@ nav {
   margin-top: 30px;
 }
 .mt-40 {
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .w-100 {
@@ -118,4 +120,30 @@ nav {
 }
 .h-100 {
   height: calc(100vh - var(--nav-height));
+}
+
+.card {
+  background: var(--black4);
+  min-width: 300px;
+  max-width: 800px;
+  text-align: left;
+  padding: 20px;
+  border-radius: 10px;
+  height: 150px;
+  margin: 10px 0px;
+}
+.card h2 {
+  font-size: 24px;
+}
+
+.card:hover {
+  background: var(--primary);
+  box-shadow: 1px 2px 6px var(--black1);
+}
+
+select {
+  padding: 5px 10px;
+  font-size: 15px;
+  background: var(--black4);
+  border-radius: 4px;
 }
