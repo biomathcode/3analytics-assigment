@@ -17,7 +17,7 @@ import Login from './auth/Login';
 
 
 function App() {
-  // const user = { username: '', isLoggedIn: false } 
+
   const [user, setUser] = useState({});
 
   const [isLoggedIn, setLoggedIn] = useState(false);
