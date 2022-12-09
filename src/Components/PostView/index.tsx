@@ -43,10 +43,13 @@ class PostView extends React.Component<PostProps, PostState> {
             return <LoadingIndicator/>
         }
         return ( data &&
-            <div className='postview'>
+            <div className='container  flex jc center'>
+                <div className='postview'>
                 <h1>{data.title}</h1>
                 
                 <p>{data.body}</p>
+                </div>
+            
 
             </div>
          );

@@ -3,12 +3,15 @@ import { CommentTypes } from "../../types";
 
 const CommentCard:FC<CommentTypes> =(comment) => {
     return ( 
-        <div>
-            <div>
+        <div className="comments">
+            <div className="fs-12">
+                {comment.email + " " + "says:"}
+            </div>
+            <div className="fs-14">
                 {comment.name}
 
             </div>
-            <div>
+            <div className="fs-14">
                 {comment.body}
             </div>
         </div>

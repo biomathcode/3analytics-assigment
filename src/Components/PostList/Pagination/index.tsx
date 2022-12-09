@@ -6,7 +6,7 @@ type PageType = {
 function Pagination({page,change}:PageType) {
     const color =(el:number) =>  page === el ? 'var(--primary)': 'var(--black3)'
     return ( 
-        <div className="flex p-20 jc center gap-10">
+        <div style={{position: 'sticky', bottom: '10px', zIndex:'10', borderRadius: '10px'}} className="flex p-20 jc center gap-10 black3">
             {
                 [0,1,2,3,4,5,6,7,8,9].map((el) =>  (
                         <div className={"center flex jc"    }  

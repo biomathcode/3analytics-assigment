@@ -70,7 +70,7 @@ class UserSelect extends React.Component<PropType> {
         return (
         <div className="flex " style={{width: '80%'}}>
         <label className="flex gap-10 center">
-        Get Post By User
+        Search
         <select defaultValue={selected} value={selected} onChange={(e) => this.changeSelected(e, this.props.search) }>
             <option value="none" >None</option>
             {

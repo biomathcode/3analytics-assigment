@@ -35,8 +35,9 @@ class Comments extends React.Component<CommentsProps, CommentsState> {
     const { data, isFetching } = this.state;
 
     return (
-      <div>
-        <p>Comments</p>
+      <div className="container flex col  jc  center ">
+        <p className="fs-20 " >Comments</p>
+        
         {isFetching && <LoadingIndicator />}
         {data.map((comment) => {
           return (
@@ -44,6 +45,7 @@ class Comments extends React.Component<CommentsProps, CommentsState> {
               key={comment.id}
               body={comment.body}
               name={comment.name}
+              email={comment.email}
             />
           );
         })}
