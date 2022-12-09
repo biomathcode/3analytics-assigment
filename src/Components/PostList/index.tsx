@@ -18,6 +18,8 @@ interface PostState {
     isFetching: boolean,
     data: PostType[] | [];
     page: number,
+    isSearch: boolean, 
+    searchData: PostType[] | []
 }
  
 class PostList extends React.Component<PropType,PostState>{
@@ -27,6 +29,8 @@ class PostList extends React.Component<PropType,PostState>{
             isFetching: true, 
         data: [], 
         page: 0, 
+        isSearch : false,
+        searchData: []
         }
     }
 
@@ -36,6 +40,8 @@ class PostList extends React.Component<PropType,PostState>{
             isFetching: false, 
             data: data, 
             page: 0,
+            isSearch: false, 
+            searchData: []
         })
     }
 
@@ -48,8 +54,13 @@ class PostList extends React.Component<PropType,PostState>{
        this.fetchFunction()
        console.log('this is to time render')
     }
+
+    Search = (isSearch:boolean, searchData: []) => {
+        this.setState((prev) => ({...prev, isSearch, searchData}))
+    }
+
     render() { 
-        const {data, isFetching,page} = this.state;
+        const {data, isFetching,page, isSearch, searchData} = this.state;
 
         const offset = page * 10;
         const perpage = 10;
@@ -58,21 +69,38 @@ class PostList extends React.Component<PropType,PostState>{
         console.log('tjisis page', page);
         return ( 
             <div className=" container  jc flex col center  mt-40">
-                <UserSelect/>
+                <UserSelect  search={this.Search}  />
                 {isFetching && <LoadingIndicator/>}
-                <div className="flex col jc center">
                 {
-                    newdata.map((post) => {
-                        return(
-                            <PostCard key={post.id} id={post.id} title={post.title} body={post.body}/>
-                        )
-                    })
+                    !isSearch ? 
+                    <>
+                    <div className="flex col jc center">
+                    {
+                        newdata.map((post) => {
+                            return(
+                                <PostCard key={post.id} id={post.id} title={post.title} body={post.body}/>
+                            )
+                        })
+                    }
+    
+                    </div>
+                    
+                    <Pagination page={page} change={this.changePagination}/>
+                    </>
+                    : 
+                    <div className="flex col jc center">
+                    {
+                        searchData.map((post) => {
+                            return(
+                                <PostCard key={post.id} id={post.id} title={post.title} body={post.body}/>
+                            )
+                        })
+                    }
+    
+                    </div>
+                    
                 }
-
-                </div>
-                
-                <Pagination page={page} change={this.changePagination}/>
-
+               
 
             </div>
          );
