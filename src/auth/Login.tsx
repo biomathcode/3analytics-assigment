@@ -44,6 +44,11 @@ class Login extends React.Component {
       return (
         
         <div className="mt-40 w-100 h-100 flex center col jc">
+          <ul>
+            <li>Username: admin</li>
+            <li>Password: admin@123</li>
+
+          </ul>
         {this.state.error && <p>{this.state.error}</p>}
 
 
@@ -58,7 +63,7 @@ class Login extends React.Component {
           </label>
           <label className="flex gap-20">
             Password
-            <input type="text" name="password" value={this.state.password} onChange={(e) => this.handleChange(e)} />
+            <input type="password" name="password" value={this.state.password} onChange={(e) => this.handleChange(e)} />
 
           </label>
           <input type="submit" value="Submit" />
