@@ -28,8 +28,15 @@ class Comments extends React.Component<CommentsProps, CommentsState> {
     console.log(data);
   }
 
+ 
+
   componentDidMount(): void {
     this.fetcher(this.props.postId);
+  }
+  componentDidUpdate(prevProps: Readonly<CommentsProps>, prevState: Readonly<CommentsState>, snapshot?: any): void {
+    if(prevProps.postId !== this.props.postId) {
+      this.fetcher(this.props.postId);
+  }
   }
   render() {
     const { data, isFetching } = this.state;

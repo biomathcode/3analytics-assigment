@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import UserContext from "../../context/UserContext";
+import Search from "../Search";
 
 type setUserType = (username:string, isLoggedIn: boolean) =>void;
 type toggleLogintype = (state: boolean) => void;
@@ -27,6 +28,7 @@ function Navbar() {
                         }}
                         >
                         <Link to="/">Home</Link>
+                        <Search  />
                         {isLoggedIn ? 
                         <button onClick={() =>logOut(setUser, toggleLogin)} >
                         log out

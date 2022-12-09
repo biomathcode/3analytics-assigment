@@ -1,4 +1,4 @@
-import { useState, Component} from 'react'
+import { useState, Component, useEffect} from 'react'
 import './App.css'
 import {
   BrowserRouter,
@@ -41,7 +41,7 @@ function App() {
     <Routes>
       <Route element={<Private />}>
       <Route path="/" element={ <PostList/>  } />
-      <Route path="post/:id" element={<Post/>} />
+      <Route path="post/:id"  element={<Post/>} />
 
       </Route>
 
@@ -59,6 +59,7 @@ function App() {
 
 const Post = () => {
   const {id} = useParams();
+  
   return (
     <div>
       {

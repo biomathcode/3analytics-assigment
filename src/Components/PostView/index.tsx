@@ -22,7 +22,9 @@ class PostView extends React.Component<PostProps, PostState> {
         title: '', 
 
     }
-    }
+    } 
+
+    
 
     async fetcher(id: string) {
         const data = await getPostsById(id);
@@ -31,6 +33,14 @@ class PostView extends React.Component<PostProps, PostState> {
             data: data
         })
         console.log(data);
+    }
+   
+
+   
+    componentDidUpdate(prevProps: Readonly<PostProps>, prevState: Readonly<PostState>, snapshot?: any): void {
+        if(prevProps.id !== this.props.id) {
+            this.fetcher(this.props.id);
+        }
     }
 
     componentDidMount(): void {
