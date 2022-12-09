@@ -7,7 +7,7 @@ import {
   useParams,
 } from "react-router-dom";
 
-import UserContext, {UserProvider} from './context/UserContext';
+import  {UserProvider} from './context/UserContext';
 import PostList from './Components/PostList';
 import PostView from './Components/PostView';
 import Navbar from './Components/Navbar';
@@ -40,7 +40,7 @@ function App() {
 
     <Routes>
       <Route element={<Private />}>
-      <Route path="/" element={ <Home/>  } />
+      <Route path="/" element={ <PostList/>  } />
       <Route path="post/:id" element={<Post/>} />
 
       </Route>
@@ -55,21 +55,7 @@ function App() {
   )
 }
 
-class Home extends Component {
-  static contextType = UserContext
 
-
-  componentDidMount() {
-    const context = this.context;
-
-    console.log(context) // { name: 'Tania', loggedIn: true }
-  }
-  
-
-  render() {
-    return <div><PostList /></div>
-  }
-}
 
 const Post = () => {
   const {id} = useParams();

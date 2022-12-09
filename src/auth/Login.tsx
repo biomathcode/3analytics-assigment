@@ -43,7 +43,8 @@ class Login extends React.Component {
   
     render() {
       return (
-        <>
+        
+        <div className="mt-40 w-100 h-100 flex center col jc">
         {this.state.error && <p>{this.state.error}</p>}
 
 
@@ -66,7 +67,7 @@ class Login extends React.Component {
         </>
            )}
         </UserContext.Consumer>
-        </>
+        </div>
       );
     }
   }

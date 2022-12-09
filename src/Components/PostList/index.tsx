@@ -37,9 +37,10 @@ class PostList extends React.Component{
     render() { 
         const {data, isFetching} = this.state;
         return ( 
-            <div>
+            <div className="  jc flex col center  mt-40">
                 <UserSelect/>
                 {isFetching && <LoadingIndicator/>}
+                <div className="flex col jc center">
                 {
                     data.map((post) => {
                         return(
@@ -47,7 +48,10 @@ class PostList extends React.Component{
                         )
                     })
                 }
-        <Pagination/>
+
+                </div>
+                
+                <Pagination/>
 
 
             </div>
@@ -60,14 +64,14 @@ export default PostList;
 
 const PostCard:FC<PostType> = (data) => {
     return (
-        <>
+        <div className="card">
         <Link to={"/post/" + data.id}>
         <div>
             <h2>{data.title}</h2>
             <div>{data.body}</div>
         </div>
         </Link>
-        </>
+        </div>
         
     )
 }

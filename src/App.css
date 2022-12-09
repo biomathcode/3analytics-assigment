@@ -1,8 +1,40 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  /* padding: 2rem; */
   text-align: center;
+}
+
+.black1 {
+  background-color: var(--black1);
+}
+
+.black2 {
+  background-color: var(--black2);
+}
+
+.black3 {
+  background-color: var(--black3);
+}
+
+.black4 {
+  background-color: var(--black4);
+}
+
+.primary {
+  background-color: var(--primary);
+}
+
+.secondary {
+  background-color: var(--secondary);
+}
+
+.text1 {
+  color: var(--text1);
+}
+
+.text2 {
+  color: var(--text2);
 }
 
 .flex {
