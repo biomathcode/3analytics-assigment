@@ -66,11 +66,15 @@ class Search extends React.Component<PropState> {
             return <LoadingIndicator/>
         }
         return ( data &&
-          
-            <Select 
+          <div style={{width: "200px"}}>
+    <Select 
+    placeholder="🔍 Search Here..."
+    isClearable
            
-            theme={theme}
-            onChange={(v) => this.handleChange(v)} options={options}/>
+           theme={theme}
+           onChange={(v) => this.handleChange(v)} options={options}/>
+          </div>
+        
          );
     }
 }

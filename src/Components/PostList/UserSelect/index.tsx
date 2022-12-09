@@ -36,7 +36,7 @@ class UserSelect extends React.Component<PropType> {
         this.setState({
             isFetching: false, 
             data: data, 
-            selected: 'None', 
+            selected: 'none', 
         })
     }
     componentDidMount(): void {
@@ -60,17 +60,18 @@ class UserSelect extends React.Component<PropType> {
 
         }
     }
-    reset() {
-        this.setState((prev) => ({...prev, selected: 'None'}));
+    reset(search: searchType) {
+        this.setState((prev) => ({...prev, selected: 'none'}));
+        search(false, []);
     }
 
     render() { 
         const {data, selected, isLoading} = this.state;
 
         return (
-        <div className="flex " style={{width: '80%'}}>
+        <div className="flex center gap-10 " style={{width: '80%'}}>
         <label className="flex gap-10 center">
-        Filter Posts by User
+        Filter 
         <select defaultValue={selected} value={selected} onChange={(e) => this.changeSelected(e, this.props.search) }>
             <option value="none" >None</option>
             {
@@ -82,6 +83,11 @@ class UserSelect extends React.Component<PropType> {
         </label>
         {
             isLoading && <LoadingIndicator text={false} width={40} height={40} color="#fff"/>
+        }
+        {
+            selected !== 'none' && 
+                        <button onClick={() => this.reset(this.props.search)} > X</button>
+            
         }
    
         </div>

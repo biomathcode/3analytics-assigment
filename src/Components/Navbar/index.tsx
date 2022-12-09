@@ -28,11 +28,15 @@ function Navbar() {
                         }}
                         >
                         <Link to="/">Home</Link>
-                        <Search  />
                         {isLoggedIn ? 
+                        <>
+                        <Search  />
+
                         <button onClick={() =>logOut(setUser, toggleLogin)} >
                         log out
-                    </button>  :
+                    </button> 
+                    </>
+                     :
                         <Link to="/login">login</Link> 
                       
                     }
