@@ -4,6 +4,7 @@ type Props = {
     width?: number;
     height?: number;
     color?: string;
+    text?: boolean, 
   
   }
 
@@ -11,6 +12,7 @@ function LoadingIndicator({
   width = 100,
   height = 100,
   color = "#000",
+  text = true,
 }:Props) {
   return (
     <div className="flex col gap-10 center">
@@ -42,7 +44,8 @@ function LoadingIndicator({
           ></animateTransform>
         </circle>
       </svg>
-      <p>Loading...</p>
+      {text &&       <p>Loading...</p>}
+
     </div>
   );
 }

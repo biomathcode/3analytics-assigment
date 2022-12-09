@@ -112,14 +112,16 @@ export default PostList;
 
 const PostCard:FC<PostType> = (data) => {
     return (
-        <div className="card">
         <Link to={"/post/" + data.id}>
+
+        <div className="card">
         <div>
             <h2>{data.title}</h2>
             <div>{data.body}</div>
         </div>
-        </Link>
         </div>
+        </Link>
+
         
     )
 }

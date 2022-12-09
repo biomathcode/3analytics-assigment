@@ -1,6 +1,7 @@
 import { UserType } from "../../../types";
 import React from 'react';
 import { getPostByUserId, getUsers } from "../../../api";
+import LoadingIndicator from "../../LoadingIndicator.tsx";
 
 
  
@@ -8,6 +9,7 @@ interface UserState {
     isfetching: boolean, 
     data: UserType[], 
     selected: string, 
+    isLoading: boolean, 
 }
 
 interface PropType {
@@ -20,6 +22,7 @@ type searchType =  (isSearch:boolean, searchData: []) => void;
 class UserSelect extends React.Component<PropType> {
     state:UserState = { isfetching: true, 
         selected: 'None', 
+        isLoading: false, 
     data: [
         {
             name: "Pratik Sharma", 
@@ -41,16 +44,19 @@ class UserSelect extends React.Component<PropType> {
        console.log('this is to time render')
     }
     changeSelected = async(e:any, search:searchType) => {
+       
         console.log(e);
         if(e.target.value === 'none') {
             this.setState((prev) => ({...prev, selected: e.target.value}));
             search(false, []);
 
         } else {
-            this.setState((prev) => ({...prev, selected: e.target.value}));
+            this.setState((prev) => ({...prev, selected: e.target.value, isLoading: true}));
             const data = await getPostByUserId(e.target.value)
             console.log(data, e.target.value);
             search(true, data);
+            this.setState((prev) => ({...prev, isLoading: false}));
+
 
         }
     }
@@ -59,7 +65,7 @@ class UserSelect extends React.Component<PropType> {
     }
 
     render() { 
-        const {data, selected} = this.state;
+        const {data, selected, isLoading} = this.state;
 
         return (
         <div className="flex " style={{width: '80%'}}>
@@ -74,7 +80,9 @@ class UserSelect extends React.Component<PropType> {
             }
         </select>
         </label>
-        
+        {
+            isLoading && <LoadingIndicator text={false} width={40} height={40} color="#fff"/>
+        }
    
         </div>
             
